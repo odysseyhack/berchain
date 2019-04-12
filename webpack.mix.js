@@ -1,4 +1,4 @@
-const mix = require('laravel-mix')
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,8 +11,8 @@ const mix = require('laravel-mix')
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css')
+mix.react('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css');
 
 /*
  | If you're running Laravel on a virtualized environment, set this domain
@@ -22,3 +22,4 @@ mix.js('resources/js/app.js', 'public/js')
 mix.browserSync({
   proxy: 'odyssey.local'
 })
+
