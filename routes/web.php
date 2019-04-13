@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+})->name('home');
+
+// Redirect to home if no badge ID is specified
+Route::get('/badge', function () {
+    return redirect()->route('home');
 });
+
+// Show the badge
+Route::get('/badge/{id}', 'BadgeController@showBadge');
+
+// Redirect to home if no dashboard ID is specified
+Route::get('/dashboard', function () {
+    return redirect()->route('home');
+});
+
+// Show the corporate-dashboard (public)
+Route::get('/dashboard/{id}', 'DashboardController@showDashboard');
