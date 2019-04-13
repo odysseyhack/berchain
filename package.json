@@ -12,6 +12,7 @@
     "lint:fix": "standard --fix ./resources/js/*"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-react": "^7.0.0",
     "axios": "^0.18",
     "bootstrap": "^4.0.0",
@@ -29,12 +30,6 @@
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
     "snazzy": "^8.0.0",
-    "standard": "12.0.1",
-    "standardjs": "^1.0.0-alpha",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "dependencies": {
-    "babel-eslint": "10.0.1",
-    "eslint": "5.16.0"
+    "standard": "^12.0.1"
   }
 }

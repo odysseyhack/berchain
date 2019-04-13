@@ -1,0 +1,26 @@
+#publicDashboard {
+  #facts, .wrapper {
+    border-bottom: 1px solid $gray;
+    padding-bottom: 3em;
+    margin-bottom: 3em;
+  }
+
+  #badge {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .fact {
+    &+.fact,
+    &+.w-100 {
+      border-left: 1px solid $gray;
+    }
+
+    p {
+      margin-bottom: 0;
+      color: darken($gray, 40%);
+    }
+  }
+}
