@@ -1,0 +1,7 @@
+component_depth: 2
+languages:
+- javascript
+- php
+exclude:
+- /public/
+- /resources/js/contracts/
