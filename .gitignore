@@ -15,3 +15,7 @@ php.ini
 docker-compose.yml
 process_status_log.txt
 /dbdata
+Vagrantfile
+after.sh
+aliases
+.DS_Store
