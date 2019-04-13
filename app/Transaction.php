@@ -14,4 +14,13 @@ class Transaction extends Model
     protected $fillable = [
         'type'
     ];
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function kpis()
+    {
+        return $this->belongsTo('App\Project');
+    }
 }

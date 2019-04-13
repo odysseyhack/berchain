@@ -14,5 +14,5 @@ require('./bootstrap')
  */
 
 require('./components/Example')
-require('./components/PublicDashboard')
+//require('./components/PublicDashboard')
 require('./components/CreateTransaction')

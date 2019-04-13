@@ -20,6 +20,6 @@ mix.react('resources/js/app.js', 'public/js')
  | comment these lines.
  */
 mix.browserSync({
-  proxy: 'odyssey.local'
+  proxy: 'badge.local'
 })
 

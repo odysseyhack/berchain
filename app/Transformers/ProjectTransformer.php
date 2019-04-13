@@ -3,25 +3,41 @@
 namespace App\Transformers;
 
 
+use App\Services\KpiCalcServices;
+
 /**
  * Candle transfomer to the TradingView format
  */
 class ProjectTransformer extends Transformer {
+    /**
+     * @var KpiCalcServices
+     */
+    private $kpiCalcServices;
 
     /**
      * TradingViewTransformer constructor.
+     * @param KpiCalcServices $kpiCalcServices
      */
-    public function __construct()
+    public function __construct(KpiCalcServices $kpiCalcServices)
     {
-
+        $this->kpiCalcServices = $kpiCalcServices;
     }
 
     public function transform($project)
     {
 
+        $project->load('transactions');
+
+        $totalDonated = $project->transactions->sum('amount');
+
         $filteredProject = [];
 
         $filteredProject['name'] =  $project->name;
+        $filteredProject['total_donated'] = $totalDonated;
+        $filteredProject['jobs_per_hectare'] = $this->kpiCalcServices->calcJobsPerHectare($totalDonated);
+        $filteredProject['tons_of_biomass'] = $this->kpiCalcServices->calcTonsOfBiomass($totalDonated);
+        $filteredProject['reduction_of_co2'] = $this->kpiCalcServices->reductionOfCo2($totalDonated);
+
         if(count($project->kpis)) {
             $filteredProject['kpis'] = [];
 
