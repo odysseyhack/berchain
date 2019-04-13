@@ -21,4 +21,5 @@ Vagrantfile
 after.sh
 aliases
 .DS_Store
+.vagrant/
 
