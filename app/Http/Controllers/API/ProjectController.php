@@ -11,6 +11,7 @@ use App\Period;
 use App\Services\StrategyService;
 use App\Services\WatcherService;
 use App\Strategy;
+use App\Transformers\ProjectTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;

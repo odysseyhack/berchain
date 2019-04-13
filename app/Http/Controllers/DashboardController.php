@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Transformers\ProjectTransformer;
 use Illuminate\Routing\Controller as BaseController;
 
 class DashboardController extends BaseController
@@ -10,11 +11,16 @@ class DashboardController extends BaseController
     /**
      * Display a badge
      *
+     * @param $id
+     * @param ProjectTransformer $projectTransformer
      * @return view
      */
-    public function showDashboard($id)
+    public function showDashboard($id, ProjectTransformer $projectTransformer)
     {
-        $project = Project::find($id);
+        $dbProject = Project::find($id);
+        $project = $projectTransformer->transform($dbProject);
+
+        //dd($filteredProjects, $project);
 
         $db =[
             [
