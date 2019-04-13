@@ -20,7 +20,7 @@ Route::get('/badge', function () {
     return redirect()->route('home');
 });
 
-Route::resource('projects', 'ProjectController');
+Route::resource('my-projects', 'Ngo\ProjectController');
 
 
 Auth::routes();

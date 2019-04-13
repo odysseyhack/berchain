@@ -15,7 +15,6 @@
   </head>
   <body>
     <div class="container">
-      <div id="publicDashboard"></div>
       <div id="badge" class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">
@@ -25,6 +24,8 @@
 
             <div class="card-body">
               <p>{{ $description }}</p>
+              <div id="publicDashboard"></div>
+
               <p>{{ $some_other_field }}</p>
             </div>
           </div>

@@ -6,7 +6,7 @@
 
         @foreach($projects as $project)
             <td>
-                <td><a href="/projects/{{ $project->id }}">{{ $project->name }}</td>
+                <td><a href="/my-projects/{{ $project->id }}">{{ $project->name }}</td>
             </td>
         @endforeach
         </table>

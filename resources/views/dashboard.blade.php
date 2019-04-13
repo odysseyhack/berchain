@@ -13,6 +13,7 @@
           <p>{{ $description }}</p>
           <p>{{ $some_other_field }}</p>
         </div>
+        <div id="dashboardData" style="display:none">{{ json_encode($project)}}</div>
       </div>
     </div>
   </div>

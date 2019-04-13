@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Routing\Controller as BaseController;
 
 class DashboardController extends BaseController
@@ -13,6 +14,8 @@ class DashboardController extends BaseController
      */
     public function showDashboard($id)
     {
+        $project = Project::find($id);
+
         $db =[
             [
                 'company_name' => 'FOO',
@@ -33,7 +36,8 @@ class DashboardController extends BaseController
             ->with([
                 'company_name' => $data['company_name'],
                 'description' => $data['description'],
-                'some_other_field' => $data['some_other_field']
+                'some_other_field' => $data['some_other_field'],
+                'project' => $project
             ]);
     }
 }

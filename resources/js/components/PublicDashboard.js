@@ -6,7 +6,7 @@ export default class Example extends Component {
 
   componentDidMount() {
 
-    debugger
+    alert('componentDidMount');
 
   }
 
