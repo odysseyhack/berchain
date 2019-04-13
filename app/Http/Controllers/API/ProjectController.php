@@ -47,11 +47,33 @@ class ProjectController extends ApiController {
 
         return response()->json(['success' => true, 'kpis' => $kpis]);
 
-        /*Transaction::create([
-           'type' => 'manual',
-           'amount' => $request->get('amount'),
-            'donator_id' => $request->get('donorId')
-        ]);*/
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveDonation(Request $request)
+    {
+        try {
+            Transaction::create([
+                'type' => 'manual',
+                'amount' => $request->get('amount'),
+                'donator_id' => $request->get('donorId')
+            ]);
+            $success = true;
+        }
+        catch(\Exception $exception) {
+            $success = false;
+            $message = $exception->getMessage();
+        }
+
+        return response()->json(['success' => $success, $message => $message ]);
+
+
     }
 
 }
