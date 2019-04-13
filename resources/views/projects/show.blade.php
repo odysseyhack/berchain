@@ -17,10 +17,12 @@
         </table>
     @endif
 
-    <h3>Create a new transaction</h3>
+    <!-- Create a new transaction -->
     <div id="transaction"></div>
 
-    <h3>Badges</h3>
+    <br/>
+    <br/>
+    <h3>Badges (donors)</h3>
     @if(count($project->donators))
         <table class="table">
 
@@ -34,5 +36,5 @@
         </table>
     @endif
 
-
+    <div id="donators" style="display:none;">{{ json_encode($project->donators) }}</div>
 @endsection

@@ -5,35 +5,50 @@ export default class CreateTransaction extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: '',
-      description: '',
+      amount: '',
+      donatorId: '',
+      donators: [],
       errors: []
     }
     this.handleFieldChange = this.handleFieldChange.bind(this)
-    this.handleCreateNewProject = this.handleCreateNewProject.bind(this)
     this.hasErrorFor = this.hasErrorFor.bind(this)
     this.renderErrorFor = this.renderErrorFor.bind(this)
+    this.getDonators = this.getDonators.bind(this)
+    this.createTransaction = this.createTransaction.bind(this)
+  }
+
+  componentDidMount() {
+
+    let donators = JSON.parse(document.getElementById('donators').innerText);
+
+    this.setState({donators: donators});
+
   }
 
   handleFieldChange (event) {
+
+    console.log('handle', event.target.name);
     this.setState({
       [event.target.name]: event.target.value
     })
   }
-  handleCreateNewProject (event) {
+
+  createTransaction (event) {
     event.preventDefault()
 
-    const { history } = this.props
+    //const { history } = this.props
 
-    const project = {
-      name: this.state.name,
-      description: this.state.description
+    const donation = {
+      amount: this.state.amount,
+      donatorId: this.state.donatorId
     }
 
-    axios.post('/api/projects', project)
+    axios.post('/api/projects/1/donation', donation)
       .then(response => {
         // redirect to the homepage
-        history.push('/')
+        //history.push('/')
+        console.log(response);
+        //Artur
       })
       .catch(error => {
         this.setState({
@@ -50,46 +65,48 @@ export default class CreateTransaction extends Component {
       )
     }
   }
-  createTransaction() {
-    console.log('here');
-  }
 
   hasErrorFor (field) {
-    return !!this.state.errors[field]
+    console.log(field, this.state)
+    return !!this.state.errors && !!this.state.errors[field]
   }
+  getDonators() {
 
+    console.log('get donators', this.state.donators)
+    return <select className="form-control">
+      {this.state.donators.map(donator => {
+        return <option value={donator.id}>{donator.name}</option>
+      })}
+    </select>
+  }
   render () {
 
     return (
       <div className='container'>
         <div className='row justify-content-center'>
           <div className='col-md-12'>
+
             <h3>Create transaction</h3>
+
             <form onSubmit={this.createTransaction}>
               <div className='form-group'>
-                <label htmlFor='name'>Project name</label>
+                <label htmlFor='money'>Donation amount in US$</label>
                 <input
-                  id='name'
-                  type='text'
-                  className={`form-control ${this.hasErrorFor('name') ? 'is-invalid' : ''}`}
-                  name='name'
-                  value={this.state.name}
+                  id='money'
+                  type='money'
+                  className={`form-control ${this.hasErrorFor('amount') ? 'is-invalid' : ''}`}
+                  name='amount'
+                  value={this.state.amount}
                   onChange={this.handleFieldChange}
                 />
-                {this.renderErrorFor('name')}
+                {this.renderErrorFor('amount')}
+
+                <br/>
+                <label htmlFor='donator'>Donator</label>(<a href='/donators/create'>Add a donator</a>)
+                {this.getDonators()}
+                {this.renderErrorFor('donator')}
               </div>
-              <div className='form-group'>
-                <label htmlFor='description'>Project description</label>
-                <textarea
-                  id='description'
-                  className={`form-control ${this.hasErrorFor('description') ? 'is-invalid' : ''}`}
-                  name='description'
-                  rows='10'
-                  value={this.state.description}
-                  onChange={this.handleFieldChange}
-                />
-                {this.renderErrorFor('description')}
-              </div>
+
               <button className='btn btn-primary'>Create</button>
             </form>
           </div>

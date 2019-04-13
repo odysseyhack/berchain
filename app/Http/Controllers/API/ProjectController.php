@@ -11,6 +11,7 @@ use App\Period;
 use App\Services\StrategyService;
 use App\Services\WatcherService;
 use App\Strategy;
+use App\Transaction;
 use App\Transformers\ProjectTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,29 @@ class ProjectController extends ApiController {
         $project = Project::find($id);
 
         return response()->json(['success' => true, 'project' => $project]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function createDonation(Request $request)
+    {
+        $kpis = [];
+
+        $kpis['jobsPerHectare'] = 34;
+        $kpis['tonsOfBiomass'] = 72;
+        $kpis['reductionOfCo2'] = 23;
+
+        return response()->json(['success' => true, 'kpis' => $kpis]);
+
+        /*Transaction::create([
+           'type' => 'manual',
+           'amount' => $request->get('amount'),
+            'donator_id' => $request->get('donorId')
+        ]);*/
     }
 
 }

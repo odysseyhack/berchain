@@ -13,6 +13,5 @@ require('./bootstrap')
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example')
-//require('./components/PublicDashboard')
+require('./components/PublicDashboard')
 require('./components/CreateTransaction')
