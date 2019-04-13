@@ -22,7 +22,6 @@ Route::get('/badge', function () {
 
 Route::resource('my-projects', 'Ngo\ProjectController');
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

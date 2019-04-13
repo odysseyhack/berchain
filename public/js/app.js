@@ -61525,6 +61525,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
+__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
+
 __webpack_require__(/*! ./components/PublicDashboard */ "./resources/js/components/PublicDashboard.js");
 
 __webpack_require__(/*! ./components/CreateTransaction */ "./resources/js/components/CreateTransaction.js");
@@ -61570,6 +61572,8 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  debugger;
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.Laravel.apiToken;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
@@ -61756,10 +61760,10 @@ if (document.getElementById('transaction')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/PublicDashboard.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/PublicDashboard.js ***!
-  \****************************************************/
+/***/ "./resources/js/components/Example.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Example.js ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61803,11 +61807,6 @@ function (_Component) {
   }
 
   _createClass(Example, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      alert('componentDidMount');
-    }
-  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -61831,9 +61830,202 @@ function (_Component) {
 
 
 
-if (document.getElementById('publicDashboard')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('publicDashboard'));
+if (document.getElementById('root')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('root'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/PublicDashboard.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/PublicDashboard.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PublicDashboard; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _dashboard_Fact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dashboard/Fact */ "./resources/js/components/dashboard/Fact.js");
+/* harmony import */ var _dashboard_Detail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dashboard/Detail */ "./resources/js/components/dashboard/Detail.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var PublicDashboard =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PublicDashboard, _Component);
+
+  function PublicDashboard() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, PublicDashboard);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(PublicDashboard)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      data: ''
+    };
+    return _this;
+  }
+
+  _createClass(PublicDashboard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var data = document.getElementById('dashboardData');
+      data = data.innerText || data.textContent;
+      data = JSON.parse(data);
+      this.setState({
+        data: data
+      });
+      console.log(data);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state$data = this.state.data,
+          name = _this$state$data.name,
+          total_donated = _this$state$data.total_donated,
+          jobs_per_hectare = _this$state$data.jobs_per_hectare,
+          tons_of_biomass = _this$state$data.tons_of_biomass,
+          reduction_of_co2 = _this$state$data.reduction_of_co2;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "badge",
+        className: "row text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Badge goes here!!1!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "facts",
+        className: "row text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Fact__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        title: "Funds donated",
+        body: '€' + total_donated
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Fact__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        title: "Jobs created per hectar",
+        body: jobs_per_hectare
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Fact__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        title: "Tons of biomass / ha",
+        body: tons_of_biomass + 't'
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Fact__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        title: "Reduction of CO2",
+        body: reduction_of_co2 + 't'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        title: jobs_per_hectare + ' Jobs',
+        subtitle: "created per hectar",
+        body: "Ipsum sequi deleniti impedit maiores iure Recusandae explicabo porro officiis corporis voluptatum? Dolor dolor magnam doloremque architecto consectetur Voluptates vel quidem minus molestias nemo!  Voluptatem quaerat quos rem tenetur dolores?",
+        project: name
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        title: tons_of_biomass + ' Tons',
+        subtitle: "of biomass per hectar",
+        body: "Sit id est mollitia in iure Beatae illum cum fuga iste quo? Aliquid repellat eaque praesentium necessitatibus ad veniam. Suscipit placeat esse quam totam optio? Fugit sit rerum molestias veritatis.",
+        project: name
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Detail__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        title: reduction_of_co2 + ' Tons',
+        subtitle: "of CO\u2082 saved",
+        body: "Amet blanditiis sapiente nesciunt repellat aperiam, ab Nulla officiis dolorem assumenda cum odit? Quisquam consequuntur hic rem ipsam dignissimos Reiciendis eaque porro aliquid doloribus deleniti fugit? Maiores molestias neque atque.",
+        project: name
+      }));
+    }
+  }]);
+
+  return PublicDashboard;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+if (document.getElementById('publicDashboard')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PublicDashboard, null), document.getElementById('publicDashboard'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/Detail.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/dashboard/Detail.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var detail = function detail(props) {
+  var title = props.title,
+      subtitle = props.subtitle,
+      body = props.body,
+      hash = props.hash,
+      project = props.project;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, subtitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Logo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Project ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), project), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BlockHash ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "418f0d7f080844da996f586a5f9cabcffd949e7b61cd43b480ff48621810673c")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/img/bar-graph.svg"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "w-100"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (detail);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/Fact.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/dashboard/Fact.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var fact = function fact(props) {
+  var title = props.title,
+      body = props.body;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "fact col-xs-2 col-sm-6 col-md-3"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, body));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (fact);
 
 /***/ }),
 

@@ -10655,8 +10655,42 @@ a.text-dark:focus {
   }
 }
 
+#publicDashboard #facts,
+#publicDashboard .wrapper {
+  border-bottom: 1px solid #dee4e6;
+  padding-bottom: 3em;
+  margin-bottom: 3em;
+}
+
+#publicDashboard #badge {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#publicDashboard .fact + .fact,
+#publicDashboard .fact + .w-100 {
+  border-left: 1px solid #dee4e6;
+}
+
+#publicDashboard .fact p {
+  margin-bottom: 0;
+  color: #6b858d;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  display: block;
+  width: 100%;
 }
 

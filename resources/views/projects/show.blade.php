@@ -38,3 +38,4 @@
 
     <div id="donators" style="display:none;">{{ json_encode($project->donators) }}</div>
 @endsection
+
