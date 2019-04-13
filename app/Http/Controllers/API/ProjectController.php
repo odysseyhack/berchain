@@ -62,7 +62,8 @@ class ProjectController extends ApiController {
             Transaction::create([
                 'type' => 'manual',
                 'amount' => $request->get('amount'),
-                'donator_id' => $request->get('donorId')
+                'donator_id' => $request->get('donorId'),
+                'block_address' => $request->get('blockAddress')
             ]);
             $success = true;
         }
