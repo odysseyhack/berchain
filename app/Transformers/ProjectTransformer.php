@@ -36,7 +36,7 @@ class ProjectTransformer extends Transformer {
         $filteredProject['total_donated'] = $totalDonated;
         $filteredProject['jobs_per_hectare'] = $this->kpiCalcServices->calcJobsPerHectare($totalDonated);
         $filteredProject['tons_of_biomass'] = $this->kpiCalcServices->calcTonsOfBiomass($totalDonated);
-        $filteredProject['reduction_of_co2'] = $this->kpiCalcServices->reductionOfCo2($totalDonated);
+        $filteredProject['reduction_of_co2'] = $this->kpiCalcServices->calcReductionOfCo2($totalDonated);
 
         if(count($project->kpis)) {
             $filteredProject['kpis'] = [];
