@@ -21,6 +21,13 @@
 
       @include('footer')
     </div>
+    <script>
+      window.Laravel = {};
+      window.Laravel = {!! json_encode([
+       'apiToken' => Auth::user()->api_token ?? null,
+   ]) !!};
+    </script>
     <script src="{{ mix('js/app.js') }}"></script>
+
   </body>
 </html>

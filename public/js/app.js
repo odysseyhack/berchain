@@ -61525,8 +61525,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js"); //require('./components/PublicDashboard')
-
+__webpack_require__(/*! ./components/PublicDashboard */ "./resources/js/components/PublicDashboard.js");
 
 __webpack_require__(/*! ./components/CreateTransaction */ "./resources/js/components/CreateTransaction.js");
 
@@ -61571,6 +61570,8 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  debugger;
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.Laravel.apiToken;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
@@ -61639,36 +61640,48 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateTransaction).call(this, props));
     _this.state = {
-      name: '',
-      description: '',
+      amount: '',
+      donatorId: '',
+      donators: [],
       errors: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
-    _this.handleCreateNewProject = _this.handleCreateNewProject.bind(_assertThisInitialized(_this));
     _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
     _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
+    _this.getDonators = _this.getDonators.bind(_assertThisInitialized(_this));
+    _this.createTransaction = _this.createTransaction.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CreateTransaction, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var donators = JSON.parse(document.getElementById('donators').innerText);
+      this.setState({
+        donators: donators
+      });
+    }
+  }, {
     key: "handleFieldChange",
     value: function handleFieldChange(event) {
+      console.log('handle', event.target.name);
       this.setState(_defineProperty({}, event.target.name, event.target.value));
     }
   }, {
-    key: "handleCreateNewProject",
-    value: function handleCreateNewProject(event) {
+    key: "createTransaction",
+    value: function createTransaction(event) {
       var _this2 = this;
 
-      event.preventDefault();
-      var history = this.props.history;
-      var project = {
-        name: this.state.name,
-        description: this.state.description
+      event.preventDefault(); //const { history } = this.props
+
+      var donation = {
+        amount: this.state.amount,
+        donatorId: this.state.donatorId
       };
-      axios.post('/api/projects', project).then(function (response) {
+      axios.post('/api/projects/1/donation', donation).then(function (response) {
         // redirect to the homepage
-        history.push('/');
+        //history.push('/')
+        console.log(response); //Artur
       })["catch"](function (error) {
         _this2.setState({
           errors: error.response.data.errors
@@ -61685,14 +61698,22 @@ function (_Component) {
       }
     }
   }, {
-    key: "createTransaction",
-    value: function createTransaction() {
-      console.log('here');
-    }
-  }, {
     key: "hasErrorFor",
     value: function hasErrorFor(field) {
-      return !!this.state.errors[field];
+      console.log(field, this.state);
+      return !!this.state.errors && !!this.state.errors[field];
+    }
+  }, {
+    key: "getDonators",
+    value: function getDonators() {
+      console.log('get donators', this.state.donators);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control"
+      }, this.state.donators.map(function (donator) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: donator.id
+        }, donator.name);
+      }));
     }
   }, {
     key: "render",
@@ -61708,26 +61729,19 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "name"
-      }, "Project name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "name",
-        type: "text",
-        className: "form-control ".concat(this.hasErrorFor('name') ? 'is-invalid' : ''),
-        name: "name",
-        value: this.state.name,
+        htmlFor: "money"
+      }, "Donation amount in US$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "money",
+        type: "money",
+        className: "form-control ".concat(this.hasErrorFor('amount') ? 'is-invalid' : ''),
+        name: "amount",
+        value: this.state.amount,
         onChange: this.handleFieldChange
-      }), this.renderErrorFor('name')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "description"
-      }, "Project description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        id: "description",
-        className: "form-control ".concat(this.hasErrorFor('description') ? 'is-invalid' : ''),
-        name: "description",
-        rows: "10",
-        value: this.state.description,
-        onChange: this.handleFieldChange
-      }), this.renderErrorFor('description')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), this.renderErrorFor('amount'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "donator"
+      }, "Donator"), "(", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/donators/create"
+      }, "Add a donator"), ")", this.getDonators(), this.renderErrorFor('donator')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary"
       }, "Create")))));
     }
@@ -61744,10 +61758,10 @@ if (document.getElementById('transaction')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
+/***/ "./resources/js/components/PublicDashboard.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/PublicDashboard.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61791,6 +61805,11 @@ function (_Component) {
   }
 
   _createClass(Example, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      alert('componentDidMount');
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -61813,11 +61832,9 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
-console.log('>>>>', document, document.getElementById('root'));
 
-if (document.getElementById('root')) {
-  console.log('!!!!!!');
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('root'));
+if (document.getElementById('publicDashboard')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('publicDashboard'));
 }
 
 /***/ }),

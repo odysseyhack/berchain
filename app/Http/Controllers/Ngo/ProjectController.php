@@ -49,4 +49,18 @@ class ProjectController extends Controller
         return view('projects.show')->with(compact('project'));
 
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        dd('request is ', $request);
+        return redirect('/my-projects');
+
+    }
 }

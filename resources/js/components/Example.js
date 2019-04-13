@@ -20,9 +20,7 @@ export default class Example extends Component {
     )
   }
 }
-console.log('>>>>', document, document.getElementById('root'))
 
 if (document.getElementById('root')) {
-  console.log('!!!!!!')
   ReactDOM.render(<Example />, document.getElementById('root'))
 }
