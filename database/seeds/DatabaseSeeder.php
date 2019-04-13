@@ -12,5 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(CoinSymbolSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ProjectSeeder::class);
+        $this->call(KpiSeeder::class);
+        $this->call(DonatorSeeder::class);
+
     }
 }

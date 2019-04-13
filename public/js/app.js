@@ -61525,7 +61525,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
+__webpack_require__(/*! ./components/PublicDashboard */ "./resources/js/components/PublicDashboard.js");
+
+__webpack_require__(/*! ./components/CreateTransaction */ "./resources/js/components/CreateTransaction.js");
 
 /***/ }),
 
@@ -61587,10 +61589,177 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
+/***/ "./resources/js/components/CreateTransaction.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/CreateTransaction.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CreateTransaction; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var CreateTransaction =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CreateTransaction, _Component);
+
+  function CreateTransaction(props) {
+    var _this;
+
+    _classCallCheck(this, CreateTransaction);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateTransaction).call(this, props));
+    _this.state = {
+      amount: '',
+      donatorId: '',
+      donators: [],
+      errors: []
+    };
+    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
+    _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
+    _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
+    _this.getDonators = _this.getDonators.bind(_assertThisInitialized(_this));
+    _this.createTransaction = _this.createTransaction.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CreateTransaction, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var donators = JSON.parse(document.getElementById('donators').innerText);
+      this.setState({
+        donators: donators
+      });
+    }
+  }, {
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      console.log('handle', event.target.name);
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "createTransaction",
+    value: function createTransaction(event) {
+      var _this2 = this;
+
+      event.preventDefault(); //const { history } = this.props
+
+      var donation = {
+        amount: this.state.amount,
+        donatorId: this.state.donatorId
+      };
+      axios.post('/api/projects/1/donation', donation).then(function (response) {
+        // redirect to the homepage
+        //history.push('/')
+        console.log(response); //Artur
+      })["catch"](function (error) {
+        _this2.setState({
+          errors: error.response.data.errors
+        });
+      });
+    }
+  }, {
+    key: "renderErrorFor",
+    value: function renderErrorFor(field) {
+      if (this.hasErrorFor(field)) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "invalid-feedback"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.errors[field][0]));
+      }
+    }
+  }, {
+    key: "hasErrorFor",
+    value: function hasErrorFor(field) {
+      console.log(field, this.state);
+      return !!this.state.errors && !!this.state.errors[field];
+    }
+  }, {
+    key: "getDonators",
+    value: function getDonators() {
+      console.log('get donators', this.state.donators);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control"
+      }, this.state.donators.map(function (donator) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: donator.id
+        }, donator.name);
+      }));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Create transaction"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.createTransaction
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "money"
+      }, "Donation amount in US$"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "money",
+        type: "money",
+        className: "form-control ".concat(this.hasErrorFor('amount') ? 'is-invalid' : ''),
+        name: "amount",
+        value: this.state.amount,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('amount'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "donator"
+      }, "Donator"), "(", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/donators/create"
+      }, "Add a donator"), ")", this.getDonators(), this.renderErrorFor('donator')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary"
+      }, "Create")))));
+    }
+  }]);
+
+  return CreateTransaction;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+if (document.getElementById('transaction')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CreateTransaction, null), document.getElementById('transaction'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/PublicDashboard.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/PublicDashboard.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61634,6 +61803,11 @@ function (_Component) {
   }
 
   _createClass(Example, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      alert('componentDidMount');
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -61657,8 +61831,8 @@ function (_Component) {
 
 
 
-if (document.getElementById('root')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('root'));
+if (document.getElementById('publicDashboard')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Example, null), document.getElementById('publicDashboard'));
 }
 
 /***/ }),
@@ -61681,8 +61855,8 @@ if (document.getElementById('root')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/cs/Dev/odyssey/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/cs/Dev/odyssey/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/james/code/odyssey/berchain/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/james/code/odyssey/berchain/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
