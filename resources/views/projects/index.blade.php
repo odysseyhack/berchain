@@ -5,9 +5,11 @@
         <table class="table">
 
         @foreach($projects as $project)
-            <td>
-                <td><a href="/my-projects/{{ $project->id }}">{{ $project->name }}</td>
-            </td>
+            <tr>
+                <td>
+                    <td><a href="/my-projects/{{ $project->id }}">{{ $project->name }}</td>
+                </td>
+            </tr>
         @endforeach
         </table>
 

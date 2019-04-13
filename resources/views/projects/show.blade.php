@@ -16,10 +16,10 @@
     @endif
 
     <h3>Badges</h3>
-    @if(count($project->badges))
+    @if(count($project->donators))
         <table class="table">
 
-        @foreach($project->badges as $badge)
+        @foreach($project->donators as $badge)
             <td>
                 <a href="/projects/{{ $badge->id }}">{{ $badge->name }}</td>
             </td>
