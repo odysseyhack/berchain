@@ -7,7 +7,7 @@ const transactions = (props) => {
       <tr key={trans.block_address}>
         <td>{trans.block_address}</td>
         <td>13. April 2019, 20:32 UTC</td>
-        <td>Massarang Foundation</td>
+        <td>Masarang Foundation</td>
       </tr>
     )
   })
