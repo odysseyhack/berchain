@@ -1,7 +1,7 @@
 import React from 'react'
 
 const detail = (props) => {
-  const {title, subtitle, body, hash, project} = props
+  const {title, subtitle, body, hash, project, chart} = props
   return (
     <div className="wrapper">
       <div className="row">
@@ -21,7 +21,7 @@ const detail = (props) => {
         </div>
 
         <div className="col-md">
-          <img src="/img/bar-graph.svg" />
+          {chart}
         </div>
 
         <div className="w-100"></div>
