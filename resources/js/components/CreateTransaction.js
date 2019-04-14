@@ -14,6 +14,7 @@ export default class CreateTransaction extends Component {
       errors: [],
       status: 'idle'
     }
+
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.hasErrorFor = this.hasErrorFor.bind(this)
     this.renderErrorFor = this.renderErrorFor.bind(this)
@@ -23,8 +24,8 @@ export default class CreateTransaction extends Component {
 
   componentDidMount() {
 
-    console.log('string', document.getElementById('donators').innerText);
     let donators = JSON.parse(document.getElementById('donators').innerText);
+    this.projectId = document.getElementById('projectIdData').innerText;
 
     this.setState({donators: donators});
 
@@ -69,7 +70,8 @@ export default class CreateTransaction extends Component {
 
     const donation = {
       amount: this.state.amount,
-      donatorId: this.state.donatorId
+      donatorId: this.state.donatorId,
+      projectId: this.projectId
     }
 
     axios.post('/api/projects/1/donation', donation)
@@ -126,7 +128,6 @@ export default class CreateTransaction extends Component {
       <div className='container'>
         <div className='row justify-content-center'>
           <div className='col-md-12'>
-
             <h3>Create transaction</h3>
 
             <form onSubmit={this.createTransaction}>
