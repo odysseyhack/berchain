@@ -33,7 +33,8 @@
     "standard": "^12.0.1"
   },
   "dependencies": {
-    "truffle-contract": "4.0.11",
-    "web3": "1.0.0-beta.52"
+    "recharts": "^1.5.0",
+    "truffle-contract": "^4.0.11",
+    "web3": "^1.0.0-beta.52"
   }
 }
