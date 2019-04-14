@@ -20,8 +20,10 @@
       </ul>
     </div>
     <div class="user">
+      @if(Auth::check())
       <span class="user--initials">{{ substr(Auth::user()->name, 0, 1)}}</span>
       <span class="user--email">{{ Auth::user()->name }}</span>
+      @endif
     </div>
   </nav>
 </div>

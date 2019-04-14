@@ -35,7 +35,7 @@ export default class PublicDashboard extends Component {
 
     let content = this.state.showDetails
       ? <Details data={this.state.data} />
-      : <Transactions />
+      : <Transactions transactions={this.state.data.transactions} />
 
     return (
       <Fragment>
@@ -56,7 +56,8 @@ export default class PublicDashboard extends Component {
               <a href='#'>deloitte.com/about</a>
             </p>
             <p>
-              <b>Supported projects</b>
+              <b>Supported projects</b><br />
+              <img src="/img/logo-masarang.png" width="30px" />
             </p>
           </div>
         </div>
