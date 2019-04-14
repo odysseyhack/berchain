@@ -1,6 +1,33 @@
+$black: #212529;
+
 #publicDashboard {
-  #facts, .wrapper {
+  #facts {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+  }
+
+  #tab-selector {
     border-bottom: 1px solid $gray;
+    padding-bottom: 0;
+    margin-bottom: 3em;
+    display: flex;
+    justify-content: center;
+
+    button {
+      background: transparent;
+      border: 2px solid transparent;
+      padding: 1em;
+      color: $black;
+      font-weight: bold;
+
+      &.active,
+      &:hover {
+        border-bottom: 2px solid $black;
+      }
+    }
+  }
+
+  .wrapper {
     padding-bottom: 3em;
     margin-bottom: 3em;
   }
