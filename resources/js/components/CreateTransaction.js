@@ -19,6 +19,7 @@ export default class CreateTransaction extends Component {
 
   componentDidMount() {
 
+    console.log('string', document.getElementById('donators').innerText);
     let donators = JSON.parse(document.getElementById('donators').innerText);
 
     this.setState({donators: donators});

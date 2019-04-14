@@ -19,7 +19,21 @@
     <form method="POST" action="/my-projects">
         {{ csrf_field() }}
         <input type="hidden" name="coin_id" value="{{ 111 }}"/>
+        <div className='form-group'>
+            <label htmlFor='money'>Project name:</label>
+            <input id='money'
+                    type='text'
+                    class='form-control'
+                    name='amount'
+                    value=''
+            />
+            {this.renderErrorFor('amount')}
 
+            <br/>
+            <label htmlFor='donator'>Donator</label>(<a href='/donators/create'>Add a donator</a>)
+            {this.getDonators()}
+            {this.renderErrorFor('donator')}
+        </div>
         <input type="submit" value="refresh position"/>
     </form>
 

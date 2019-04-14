@@ -23,4 +23,31 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\Project');
     }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function coin()
+    {
+        return $this->belongsTo('App\Coin');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function donator()
+    {
+        return $this->belongsTo('App\Donator');
+    }
 }

@@ -45,8 +45,9 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         $project->load(['transactions', 'kpis']);
+        $donators = $project->donators;
 
-        return view('projects.show')->with(compact('project'));
+        return view('projects.show')->with(compact('project', 'donators'));
 
     }
 

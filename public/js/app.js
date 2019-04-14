@@ -61572,7 +61572,6 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-  debugger;
   window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.Laravel.apiToken;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
@@ -61658,6 +61657,7 @@ function (_Component) {
   _createClass(CreateTransaction, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log('string', document.getElementById('donators').innerText);
       var donators = JSON.parse(document.getElementById('donators').innerText);
       this.setState({
         donators: donators
