@@ -107,7 +107,7 @@ const details = (props) => {
       <Detail
         title={jobs_per_hectare + ' Jobs'}
         subtitle='created per hectar'
-        body='Ipsum sequi deleniti impedit maiores iure Recusandae explicabo porro officiis corporis voluptatum? Dolor dolor magnam doloremque architecto consectetur Voluptates vel quidem minus molestias nemo!  Voluptatem quaerat quos rem tenetur dolores?'
+        body='Ipsum sequi deleniti impedit maiores iure Recusandae explicabo porro officiis corporis voluptatum? Dolor molestias nemo!'
         project={name}
         chart={<BarChart data={jobsPerHectareData} barColor='#9BAEB4' />}
       />
