@@ -9,14 +9,21 @@ const detail = (props) => {
           <h2>{title}</h2>
           <h4>{subtitle}</h4>
           <p>{body}</p>
-          <p>Logo</p>
+          <br />
+          <p>
+            <img src="/img/logo-masarang.png" width="50px" />
+          </p>
           <p>
             Project <br />
-            {project}
+            <b style={{fontSize: '1.2em'}}>
+                Masarang Foundation
+            </b>
           </p>
           <p>
             BlockHash <br />
-            418f0d7f080844da996f586a5f9cabcffd949e7b61cd43b480ff48621810673c
+            <b style={{fontSize: '1.2em'}}>
+              418f0d7f080844da996f586a5f9cabcffd949e7b61cd43b480ff48
+            </b>
           </p>
         </div>
 
