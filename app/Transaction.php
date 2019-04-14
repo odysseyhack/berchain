@@ -13,7 +13,8 @@ class Transaction extends Model
      */
     protected $fillable = [
         'type',
-        'amount'
+        'amount',
+        'block_address'
     ];
 
     /**
