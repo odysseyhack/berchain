@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import contract from 'truffle-contract'
 import BadgeDef from '../contracts/Badge.json'
 import Web3 from 'web3'
-import BarChart from './BarChart'
+import BarChart from './dashboard/BarChart'
 
 const getAccount = async () => {
   const web3 = new Web3(window.ethereum)
