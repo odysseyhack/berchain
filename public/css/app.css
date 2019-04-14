@@ -10663,10 +10663,14 @@ a.text-dark:focus {
 }
 
 #publicDashboard #badge {
+  padding: 2em 0;
   min-height: 300px;
   display: flex;
   justify-content: center;
   align-content: center;
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
 }
 
 #publicDashboard .fact + .fact,
@@ -10677,6 +10681,46 @@ a.text-dark:focus {
 #publicDashboard .fact p {
   margin-bottom: 0;
   color: #6b858d;
+}
+
+#header {
+  border-bottom: 2px solid #dee4e6;
+  margin-bottom: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.navbar-expand-lg {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+.user--email {
+  font-weight: bold;
+}
+
+.user--initials {
+  background: #879da4;
+  width: 2em;
+  height: 2em;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.25em;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-right: 0.5em;
 }
 
 .navbar-laravel {
