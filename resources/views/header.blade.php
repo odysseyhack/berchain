@@ -20,8 +20,8 @@
       </ul>
     </div>
     <div class="user">
-      <span class="user--initials">W</span>
-      <span class="user--email">willie@masarang.nl</span>
+      <span class="user--initials">{{ substr(Auth::user()->name, 0, 1)}}</span>
+      <span class="user--email">{{ Auth::user()->name }}</span>
     </div>
   </nav>
 </div>
