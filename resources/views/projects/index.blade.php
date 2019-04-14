@@ -21,20 +21,15 @@
         <input type="hidden" name="coin_id" value="{{ 111 }}"/>
         <div className='form-group'>
             <label htmlFor='money'>Project name:</label>
-            <input id='money'
+            <input id='name'
                     type='text'
                     class='form-control'
-                    name='amount'
+                    name='name'
                     value=''
             />
-            {this.renderErrorFor('amount')}
 
-            <br/>
-            <label htmlFor='donator'>Donator</label>(<a href='/donators/create'>Add a donator</a>)
-            {this.getDonators()}
-            {this.renderErrorFor('donator')}
         </div>
-        <input type="submit" value="refresh position"/>
+        <input type="submit" value="Create project"/>
     </form>
 
 @endsection

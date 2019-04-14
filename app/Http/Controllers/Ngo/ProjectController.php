@@ -59,8 +59,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        Project::create([
+            'name' => $request->get('name'),
+            'user_id' => Auth::user()->id
+        ]);
 
-        dd('request is ', $request);
         return redirect('/my-projects');
 
     }

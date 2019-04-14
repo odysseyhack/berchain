@@ -33,10 +33,22 @@ class ProjectTransformer extends Transformer {
         $filteredProject = [];
 
         $filteredProject['name'] =  $project->name;
-        $filteredProject['total_donated'] = $totalDonated;
+        $filteredProject['total_donated'] = number_format($totalDonated, 2);
         $filteredProject['jobs_per_hectare'] = $this->kpiCalcServices->calcJobsPerHectare($totalDonated);
         $filteredProject['tons_of_biomass'] = $this->kpiCalcServices->calcTonsOfBiomass($totalDonated);
         $filteredProject['reduction_of_co2'] = $this->kpiCalcServices->calcReductionOfCo2($totalDonated);
+        setlocale(LC_MONETARY, 'en_US');
+        $transactions = [];
+
+        foreach($project->transactions as $transaction) {
+            $newTransaction = $transaction->toArray();
+            //$newTransaction['amount'] = number_format((float)$newTransaction['amount'], 2, '.', '');
+            //$newTransaction['amount'] = money_format('%i', $newTransaction['amount']);
+            $newTransaction['amount'] = number_format($newTransaction['amount'], 2);
+            $transactions[] = $newTransaction;
+        }
+
+        $filteredProject['transactions'] = $transactions;
 
         if(count($project->kpis)) {
             $filteredProject['kpis'] = [];

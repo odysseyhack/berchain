@@ -2,7 +2,7 @@
 @section('content')
 
     <h1>{{ $project->name }}</h1>
-
+    <div id="projectIdData">{{$project->id}}</div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="true">Transactions</a>
@@ -82,4 +82,3 @@
     <div id="reductionData"></div>
     <div id="donators" style="display:none;">{{ json_encode($project->donators) }}</div>
 @endsection
-

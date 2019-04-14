@@ -12,7 +12,9 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
-        'type'
+        'type',
+        'amount',
+        'block_address'
     ];
 
     /**
