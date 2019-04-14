@@ -78,8 +78,16 @@ export default class CreateTransaction extends Component {
         console.log(response);
         const data = `jobsPerHectare: ${response.data.kpis.jobsPerHectare}, tonsOfBiomass: ${response.data.kpis.tonsOfBiomass}, reductionOfCo2: ${response.data.kpis.reductionOfCo2}`
         const transactionAddr = await this.createTransactionAtBlockchain(data)
-        console.log(transactionAddr)
-        this.setState({status: 'completed'})
+        donation.blockAddress = transactionAddr
+        console.log(donation)
+        const donationResponse = await axios.post('/api/projects/1/saveDonation', donation)
+        if(donationResponse.success === true) {
+          this.setState({status: 'completed'})
+        } else {
+          console.log('something went wrong')
+          this.setState({status: 'idle'})
+        }
+
       })
       .catch(error => {
         this.setState({
