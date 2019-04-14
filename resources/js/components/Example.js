@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import contract from 'truffle-contract'
 import BadgeDef from '../contracts/Badge.json'
 import Web3 from 'web3'
+import BarChart from './BarChart'
 
 const getAccount = async () => {
   const web3 = new Web3(window.ethereum)
@@ -69,6 +70,7 @@ export default class Example extends Component {
               <div className='card-body'>
                 <p><CreateBadge /></p>
                 <p><AddTransaction badgeAddr='0x4A44e1eb04A7689F96facf61119042e06D555e69' /></p>
+                <p><BarChart /></p>
               </div>
             </div>
           </div>

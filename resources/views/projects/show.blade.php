@@ -63,5 +63,23 @@
     <br/>
 
     <div id="donators" style="display:none;">{{ json_encode($donators->toArray()) }}</div>
+    <h3>Badges (donors)</h3>
+    @if(count($project->donators))
+        <table class="table">
+
+        @foreach($project->donators as $badge)
+            <tr>
+                <td>
+                    <a href="/projects/{{ $badge->id }}">{{ $badge->name }}</td>
+                </td>
+            </tr>
+        @endforeach
+        </table>
+    @endif
+    <div id="jobsPerHectareData"></div>
+    <div id="biomassData"></div>
+    <div id="forestData"></div>
+    <div id="reductionData"></div>
+    <div id="donators" style="display:none;">{{ json_encode($project->donators) }}</div>
 @endsection
 
