@@ -14,4 +14,40 @@ class Project extends Model
     protected $fillable = [
         'name'
     ];
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function transactions()
+    {
+        return $this->hasMany('App\Transaction');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function donators()
+    {
+        return $this->hasMany('App\Donator');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function kpis()
+    {
+        return $this->hasMany('App\Kpi');
+    }
 }

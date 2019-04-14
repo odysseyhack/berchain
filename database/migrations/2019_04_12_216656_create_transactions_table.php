@@ -19,11 +19,13 @@ class CreateTransactionsTable extends Migration
             $table->decimal('amount', 36,18);
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('coin_id');
+            $table->unsignedBigInteger('donator_id');
             $table->timestamps();
         });
 
         Schema::table('transactions', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('donator_id')->references('id')->on('donators');
             $table->foreign('coin_id')->references('id')->on('coins');
         });
     }
@@ -35,6 +37,10 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
+        Schema::table('transactions', function (Blueprint $t) {
+            $t->dropForeign(['donator_id']);
+        });
+
         Schema::table('transactions', function (Blueprint $t) {
             $t->dropForeign(['project_id']);
         });

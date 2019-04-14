@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,8 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.babelConfig({
+  'presets': ['@babel/env', '@babel/react'],
+  'plugins': [
+    [
+      '@babel/plugin-proposal-class-properties',
+      {
+        'loose': true
+      }
+    ]
+  ]
+})
+
 mix.react('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+  .sass('resources/sass/app.scss', 'public/css')
 
 /*
  | If you're running Laravel on a virtualized environment, set this domain
@@ -22,4 +34,3 @@ mix.react('resources/js/app.js', 'public/js')
 mix.browserSync({
   proxy: 'odyssey.local'
 })
-

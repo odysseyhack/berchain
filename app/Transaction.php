@@ -14,4 +14,40 @@ class Transaction extends Model
     protected $fillable = [
         'type'
     ];
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function kpis()
+    {
+        return $this->belongsTo('App\Project');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function coin()
+    {
+        return $this->belongsTo('App\Coin');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function donator()
+    {
+        return $this->belongsTo('App\Donator');
+    }
 }
