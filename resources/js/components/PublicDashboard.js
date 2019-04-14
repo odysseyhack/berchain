@@ -35,7 +35,7 @@ export default class PublicDashboard extends Component {
 
     let content = this.state.showDetails
       ? <Details data={this.state.data} />
-      : <Transactions />
+      : <Transactions transactions={this.state.data.transactions} />
 
     return (
       <Fragment>
