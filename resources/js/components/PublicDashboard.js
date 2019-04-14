@@ -5,7 +5,8 @@ import Detail from './dashboard/Detail'
 
 export default class PublicDashboard extends Component {
   state = {
-    data: ''
+    data: '',
+    tab: 'impact'
   }
 
   componentDidMount () {
@@ -13,7 +14,6 @@ export default class PublicDashboard extends Component {
     data = data.innerText || data.textContent
     data = JSON.parse(data)
     this.setState({data})
-    console.log(data)
   }
 
   render () {
@@ -27,11 +27,28 @@ export default class PublicDashboard extends Component {
 
     return (
       <Fragment>
-        <div id='badge' className='row text-center'>
-          <h1>Badge goes here!!1!</h1>
+        <div id='badge' className='row'>
+          <div className='col-sm-12 col-md-4'>
+            <img src='/img/badge.svg' />
+          </div>
+          <div className='col-sm-12 col-md-6'>
+            <h2>Deloitte</h2>
+            <p>
+              Deloitte provides audit, tax, consulting, enterprise risk and
+              financial advisoryservices with more than 286,200 professionals
+              globally. As of 2017, Deloitteis the 4th largest privately owned
+              company in the United States.
+            </p>
+            <p>
+              <a href='#'>deloitte.com/about</a>
+            </p>
+            <p>
+              <b>Supported projects</b>
+            </p>
+          </div>
         </div>
 
-        <div id="facts" className="row text-center">
+        <div id='facts' className='row text-center'>
           <Fact title='Funds donated' body={'€' + total_donated} />
           <Fact title='Jobs created per hectar' body={jobs_per_hectare} />
           <Fact title='Tons of biomass / ha' body={tons_of_biomass + 't'} />
